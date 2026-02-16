@@ -15,7 +15,17 @@ class LottoMachine extends HTMLElement {
 
         const button = document.createElement('button');
         button.textContent = 'Generate Numbers';
-        button.addEventListener('click', () => this.generateNumbers(numbersContainer));
+        button.addEventListener('click', () => {
+            const usageCountKey = 'lottoGenerationCount';
+            let usageCount = parseInt(localStorage.getItem(usageCountKey) || '0');
+
+            if (usageCount < 1) {
+                this.generateNumbers(numbersContainer);
+                localStorage.setItem(usageCountKey, usageCount + 1);
+            } else {
+                alert('두 번째부터는 유료입니다.');
+            }
+        });
 
         const style = document.createElement('style');
         style.textContent = `
@@ -36,6 +46,7 @@ class LottoMachine extends HTMLElement {
                 justify-content: center;
                 align-items: center;
                 margin: 20px 0;
+                min-height: 60px; /* Ensure space is reserved for numbers */
             }
             .number {
                 display: flex;
@@ -69,7 +80,8 @@ class LottoMachine extends HTMLElement {
         wrapper.appendChild(numbersContainer);
         wrapper.appendChild(button);
 
-        this.generateNumbers(numbersContainer);
+        // We no longer generate numbers on initial load.
+        // this.generateNumbers(numbersContainer);
     }
 
     generateNumbers(container) {
