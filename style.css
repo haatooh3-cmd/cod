@@ -1,9 +1,31 @@
 
+:root {
+    --background-color: #f0f2f5;
+    --text-color: #000;
+    --lotto-machine-bg: white;
+    --lotto-machine-border: #ccc;
+    --lotto-number-bg: #f0f0f0;
+    --button-bg: #007bff;
+    --button-text: white;
+}
+
+body.dark-mode {
+    --background-color: #1a1a1a;
+    --text-color: #fff;
+    --lotto-machine-bg: #2a2a2a;
+    --lotto-machine-border: #555;
+    --lotto-number-bg: #444;
+    --button-bg: #0056b3;
+    --button-text: white;
+}
+
 body {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     margin: 0;
-    background-color: #f0f2f5;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
 }
