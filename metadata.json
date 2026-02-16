@@ -1,0 +1,5 @@
+{
+  "name": "TasteBuddy - Smart Restaurant Recommender",
+  "description": "A modern, intuitive restaurant and menu recommendation website.",
+  "requestFramePermissions": ["geolocation"]
+}
